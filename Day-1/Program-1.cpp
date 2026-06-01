@@ -1,28 +1,20 @@
-#include <iostream>
-#include <string>
-using namespace std;
-int main()
-{
-    string st = "nikhil";
-    string str = "kilhuo";
-    int len = 0;
-    for (int i = 0; i < st.length(); i++)
-    {
-        for (int j = 0; j < st.length(); j++)
-        {
-            if (st[i] == str[j])
-            {
-                len++;
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int>v;
+        unordered_map<int,int> m;
+        for(int i=0;i<nums.size();i++){
+            int first=nums[i];
+            int second=target-first;
+            if(m.find(second)!= m.end()){
+                v.push_back(i);
+                v.push_back(m[second]);
+                break;
             }
+            m[first]=i;
         }
+        
+        return v;
+        
     }
-    if (len == st.length())
-    {
-        cout << "it is anagram phrase" << endl;
-    }
-    else
-    {
-        cout << "not a anagram phrase" << endl;
-    }
-    return 0;
-}
+};
